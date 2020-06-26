@@ -10,11 +10,12 @@ try
 		mex svmpredictWeight.c ../svm.cpp svm_model_matlab.c
 	% This part is for MATLAB
 	% Add -largeArrayDims on 64-bit machines of MATLAB
+	% MATLAB 2020a note: CFLAGS="\$CFLAGS -std=c99" no longer needs the "\" 
 	else
-		mex CFLAGS="\$CFLAGS -std=c99" -largeArrayDims libsvmread.c
-		mex CFLAGS="\$CFLAGS -std=c99" -largeArrayDims libsvmwrite.c
-		mex CFLAGS="\$CFLAGS -std=c99" -largeArrayDims libsvmtrainWeight.c ../svm.cpp svm_model_matlab.c
-		mex CFLAGS="\$CFLAGS -std=c99" -largeArrayDims svmpredictWeight.c ../svm.cpp svm_model_matlab.c
+		mex CFLAGS="$CFLAGS -std=c99" -largeArrayDims libsvmread.c
+		mex CFLAGS="$CFLAGS -std=c99" -largeArrayDims libsvmwrite.c
+		mex CFLAGS="$CFLAGS -std=c99" -largeArrayDims libsvmtrainWeight.c ../svm.cpp svm_model_matlab.c
+		mex CFLAGS="$CFLAGS -std=c99" -largeArrayDims svmpredictWeight.c ../svm.cpp svm_model_matlab.c
 	end
 catch
 	fprintf('If make.m fails, please check README about detailed instructions.\n');
